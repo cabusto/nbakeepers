@@ -6,7 +6,10 @@
 	
 	</div>
 	<div class="row">
-		<h3>Stuff</h3>
+		<h3>Current Per36</h3>
+		{% for p in player_stats: %}
+		<p>{{ p.name }}</p>
+		{% endfor %}
 	</div>
 </div>
 {% endblock %}
