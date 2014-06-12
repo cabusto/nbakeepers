@@ -1,5 +1,6 @@
 import fileinput
 from PlayerStat import PlayerStat
+from RotoEvilStat import RotoEvilStat
 
 class CSVParser:
 	csvPath = ""
@@ -34,3 +35,15 @@ class CSVParser:
 				pstats.append(p)
 
 		return pstats
+	
+	def getRotoEvilStats(self):
+		data = self.loadData();
+		rotostats = []
+		
+		for row in data:
+			items = row.split(',')
+			if (len(items) == 50):
+				r = RotoEvilStat(*items)
+				rotostats.append(r)
+				
+		return rotostats
