@@ -1,15 +1,41 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<div class="container">	
-	<div class="nav">
-	
-	</div>
+
 	<div class="row">
-		<h3>Current Per36</h3>
-		{% for p in player_stats: %}
-		<p>{{ p.name }}</p>
-		{% endfor %}
+		<h1>Welcome!</h1>
+		<p>Enter your email below to be notified on this project!</p>
+		<input type="email" placeholder="Your email" />
+		<input type="submit" />
 	</div>
-</div>
+
+<br/>
+
+<div class="row" ng-controller="PlayerController as roto">
+<div class="bar">
+		<!-- Create a binding between the searchString model and the text field -->
+		<input type="text" ng-model="searchString" placeholder="Locate by Name" />
+	</div>
+	<table class="table table-striped" >
+			<thead class="info">
+				<th>RANK</th>
+				<th>NAME</th>
+				<th>AUCTION</th>
+				<th>EVILRANK</th>
+				<th>ADD</th>
+		</thead>
+		<tbody>
+		<tr ng-repeat="player in roto.players | searchFor:searchString">
+		<td>[[ player.rank ]]</td>
+		<td>[[ player.name ]]</td>
+		<td>$[[ player.price ]]</td>
+		<td>[[ player.evilrank ]]</td>
+		<td>
+			<button type="submit" class="btn-small glyphicon glyphicon-plus">			
+			</button>
+		</td>
+		</tr>
+
+		</tbody>
+	</table>
 {% endblock %}

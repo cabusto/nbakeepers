@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+	<p>{{ "hello" + "you"}}</p>
+	<div class="row">
+		<h3>Player List</h3>
+		<table class="table table-striped">
+			<thead class="info">
+				<th>RANK</th>
+				<th>NAME</th>
+				<th>AUCTION</th>
+				<th>EVILRANK</th>
+				<th>PPG</th>
+				<th>RPG</th>
+				<th>APG</th>
+				<th>3PT</th>
+				<th>SPG</th>
+				<th>BPG</th>
+				<th>FG %</th>
+				<th>FT %</th>
+				<th>ADD</th>
+			</thead>
+			<tbody>
+				{% for p in stats: %}
+				<tr>
+					<td>{{ p.rank }}</td>
+					<td>{{ p.name }}</td>
+					<td>{{ p.auction }}</td>
+					<td>{{ p.evilrank }}</td>
+					<td>{{ p.PPG }}</td>
+					<td>{{ p.RPG }}</td>
+					<td>{{ p.APG }}</td>
+					<td>{{ p.THREEPM }}</td>
+					<td>{{ p.SPG }}</td>
+					<td>{{ p.BPG }}</td>
+					<td>{{ p.FGPCT }}</td>
+					<td>{{ p.FTPCT }}</td>
+					<td><button type="submit" class="btn btn-mini">
+							<span class="glyphicon glyphicon-plus-sign"></span>
+						</button>
+					</tr>
+				{% endfor %}		
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

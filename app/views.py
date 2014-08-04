@@ -1,15 +1,21 @@
 from flask import render_template
-from app import app
-from CSVParser import CSVParser
+from app import app, db
+from models import RotoEvilStat
 
 @app.route('/')
+@app.route('/index')
+@app.route('/index.html')
 def index():
-	#filename = 'current_per36'
-	#parser = CSVParser('app/static/data/' + filename + '.csv')
-	#stats = parser.getPlayerStats()
+	return render_template('index.html')
 
-	filename2 = 'Rotoevil_sheet'
-	parser2 = CSVParser('app/static/data/' + filename2 + '.csv')
-	stats2 = parser2.getRotoEvilStats()
+@app.route('/rotoevil')	
+def rotoevil():
+	
+	stats = RotoEvilStat.query.all()
+	return render_template('rotoevil.html', stats=stats)
 
-	return render_template('index.html', player_stats = stats2)
+@app.route('/playerstats')
+def per36():
+	stats = RotoEvilStat.query.all()
+	return render_template('per36.html', stats=stats)
+
