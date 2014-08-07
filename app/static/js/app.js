@@ -31,10 +31,19 @@
 		};
 	});
 
+
 	// playerController
-	app.controller('PlayerController', function(){
+	app.controller('PlayerController', [ '$scope', function($scope){
 		this.players = playerList;
-	});
+		this.myTeam = team;
+
+		
+		$scope.addPlayer = function(player, myteamlist, playerlist) {
+    		myteamlist.push(player);
+  		}
+	}]);
+
+
 
 	var playerList = [ 
 		
@@ -99,6 +108,10 @@
 			rank: 20, name:	'Andrew Bynum', price:	36, evilrank:	41.87	
 		}
 	]
+var team = [ 
+			{
+				rank: 1, name: 'Kevin Durant', price:	89, evilrank: 48.63
+			}
+		]
 	
-
 })();
