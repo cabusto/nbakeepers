@@ -10,11 +10,18 @@
 	</div>
 
 <br/>
+<br/>
 
 <div class="row" ng-controller="PlayerController as roto">
-<div class="bar">
+<div class="panel panel-default">
+	<div class ="panel-haeding">Player List</div>
+	<div class="panel-body">
+		<p> Select players from the following list to add to your team. You may scroll or use the search feature </p>
+	<div class="bar">
 		<!-- Create a binding between the searchString model and the text field -->
 		<input type="text" ng-model="searchString" placeholder="Locate by Name" />
+	</div>
+</div>
 	</div>
 	<table class="table table-striped" >
 			<thead class="info">
@@ -38,7 +45,7 @@
 
 		</tbody>
 	</table>
-
+	
 	<table class="table table-striped" >
 			<thead class="info">
 				<th>RANK</th>
@@ -54,7 +61,8 @@
 		<td>$[[ p.price ]]</td>
 		<td>[[ p.evilrank ]]</td>
 		<td>
-			<button type="submit" class="btn-small glyphicon glyphicon-minus">			
+			<button type="submit" class="btn-small glyphicon glyphicon-minus" 
+					ng-click="removePlayer(p, roto.myTeam)">			
 			</button>
 		</td>
 		</tr>

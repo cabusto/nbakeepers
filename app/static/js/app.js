@@ -40,7 +40,23 @@
 		
 		$scope.addPlayer = function(player, myteamlist, playerlist) {
     		myteamlist.push(player);
+			// mark player as drafted
+			removePlayer(player, playerlist);
   		}
+		
+		$scope.removePlayer = function(player, myTeamList) {
+			var index = -1;
+			// search for player in myTeamList
+			for (var i = 0; i < myTeamList.length; i++) {
+				if (myTeamList[i].name === player.name) {
+					index = i;
+					break;
+				}
+			}
+			// at position index, remove 1 item
+			myTeamList.splice(index, 1);
+			
+		}
 	}]);
 
 
