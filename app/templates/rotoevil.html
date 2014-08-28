@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-	<p>{{ "hello" + "you"}}</p>
+	
 	<div class="row">
 		<h3>Player List</h3>
 		<table class="table table-striped">
@@ -22,6 +22,7 @@
 			</thead>
 			<tbody>
 				{% for p in stats: %}
+				{{ p.name }}
 				<tr>
 					<td>{{ p.rank }}</td>
 					<td>{{ p.name }}</td>

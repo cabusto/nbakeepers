@@ -1,7 +1,7 @@
 from flask import render_template
 from app import app, db
-#, db
-#from models import RotoEvilStat
+from models import RotoEvilStat
+from flask import jsonify
 
 @app.route('/')
 @app.route('/index')
@@ -9,11 +9,22 @@ from app import app, db
 def index():
 	return render_template('index.html')
 
-@app.route('/rotoevil')	
+@app.route('/rotoevil/players', methods =['GET'])	
 def rotoevil():
-	
-	#stats = RotoEvilStat.query.all()
-	return render_template('rotoevil.html', stats=stats)
+	playerList = [ 
+		
+		{
+			'rank': 1, 'name': u'Kevin Durant', 'price':	89, 'evilrank': 48.63
+		},
+		{
+			'rank': 2, 'name': u'LeBron James', 'price': 81.00, 'evilrank': 47.63
+		},
+		{
+			'rank': 18, 'name':	u'James Harden', 'price':	37, 'evilrank':	42.02	
+		}
+	]
+	return jsonify( {'stats': playerList } )
+	#return render_template('rotoevil.html', stats=RotoEvilStat.query.all())
 
 @app.route('/playerstats')
 def per36():
