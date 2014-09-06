@@ -39,9 +39,7 @@ class RotoEvilStat(db.Model):
 	TD = db.Column(db.Float, nullable=False)
 	AST_TO = db.Column(db.Float, nullable=False)
 
-	def __init__(self, rank, name, yahoo, cbs, espn, auction, comment, evilrank,
-	PPG,RPG,APG,THREEPM,SPG,BPG,FGPCT,FTPCT,TOPG,MPG,FGM,FGA,THREEPA,THREEPCT,FTM,FTA,OREB,DREB,
-	PF,TWOPM,TWOPA,TWOPCT,DD,TD,AST_TO):
+	def __init__(self, rank, name, yahoo, cbs, espn, auction, comment, evilrank,PPG,RPG,APG,THREEPM,SPG,BPG,FGPCT,FTPCT,TOPG,MPG,FGM,FGA,THREEPA,THREEPCT,FTM,FTA,OREB,DREB,PF,TWOPM,TWOPA,TWOPCT,DD,TD,AST_TO):
 		self.rank = rank
 		self.name =	name
 		self.yahoo = yahoo
@@ -76,7 +74,7 @@ class RotoEvilStat(db.Model):
 		self.TD = TD
 		self.AST_TO = AST_TO
 
-	def __repr__(self):
-		return '<player: {}, evilrank: {}>'.format(self.name, self.evilrank)
+	#def __repr__(self):
+	#	return "'player': u'{}'".format(self.name)
 
 	

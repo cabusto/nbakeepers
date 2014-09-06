@@ -19,7 +19,7 @@
 		<p> Select players from the following list to add to your team. You may scroll or use the search feature </p>
 	<div class="bar">
 		<!-- Create a binding between the searchString model and the text field -->
-		<input type="text" ng-model="searchString" placeholder="Locate by Name" />
+		<input type="text" ng-model="searchString" placeholder="Locate by name" />
 	</div>
 </div>
 	</div>
@@ -28,15 +28,16 @@
 				<th>RANK</th>
 				<th>NAME</th>
 				<th>AUCTION</th>
-				<th>EVILRANK</th>
+				<th>POSITION</th>
 				<th>ADD</th>
 		</thead>
 		<tbody>
 		<tr ng-repeat="player in roto.players | searchFor:searchString">
+			
 		<td>[[ player.rank ]]</td>
 		<td>[[ player.name ]]</td>
-		<td>$[[ player.price ]]</td>
-		<td>[[ player.evilrank ]]</td>
+		<td>[[ player.auction ]]</td>
+		<td>[[ player.yahoo ]]</td>
 		<td>
 			<button type="submit" class="btn-small glyphicon glyphicon-plus" ng-click="addPlayer(player, roto.myTeam, roto.players)">			
 			</button>

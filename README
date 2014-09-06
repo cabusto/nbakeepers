@@ -1,0 +1,11 @@
+To start the server:
+  $ parts start postgresql
+
+To stop the server:
+  $ parts stop postgresql
+
+To connect to the server:
+  $ psql
+  
+  export DATABASE_URI="postgresql://localhost/nbakeepers"
+  export APP_SETTINGS="config.DevelopmentConfig"
