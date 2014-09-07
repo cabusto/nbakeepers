@@ -34,15 +34,46 @@
 	
 	// CONTROLLERS
 	// playerController
-	app.controller('PlayerController', [ '$http', function($http){
+	app.controller('PlayerController', [ '$http', '$scope', function($http, $scope){
 		
 		var rotoevil = this;
 		rotoevil.players = [ ];
+		rotoevil.myteamList = [ ];
+		
+		$scope.add = function(player) {
+			console.log("Adding " + player.name);	
+			rotoevil.myteamList.push(player);
+			console.log("Team size " + rotoevil.myteamList.length);
+			// remove from player list
+			$scope.remove(player, rotoevil.players);
+		};
+		
+		$scope.remove = function(player, playerlist) {
+			// if playerlist doesn't exist, we are removing from myteamList.
+			// we will need to add back to main list
+			if (typeof playerlist === 'undefined') {
+				playerlist = rotoevil.myteamList;
+				rotoevil.players.splice(player.rank-1, 0, player);
+			}
+			// search for player in myTeamList
+			var index = -1;
+			for (var i = 0; i < playerlist.length; i++) {
+				if (playerlist[i].name === player.name) {
+					index = i;
+					break;
+				}
+			}
+			// at position index, remove 1 item
+			playerlist.splice(index, 1);
+			
+			// add back to main list
+		};
 		
 		$http.get('/rotoevil/players').success(function(data) {
 			rotoevil.players = data.players;
 			console.log(data.players[0]);
 			
 		});
+		
 	}]);
 })();

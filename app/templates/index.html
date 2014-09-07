@@ -14,7 +14,7 @@
 
 <div class="row" ng-controller="PlayerController as roto">
 <div class="panel panel-default">
-	<div class ="panel-haeding">Player List</div>
+	<div class="panel-heading">Player List</div>
 	<div class="panel-body">
 		<p> Select players from the following list to add to your team. You may scroll or use the search feature </p>
 	<div class="bar">
@@ -39,7 +39,7 @@
 		<td>[[ player.auction ]]</td>
 		<td>[[ player.yahoo ]]</td>
 		<td>
-			<button type="submit" class="btn-small glyphicon glyphicon-plus" ng-click="addPlayer(player, roto.myTeam, roto.players)">			
+			<button type="submit" class="btn-small glyphicon glyphicon-plus" ng-click="add(player)">			
 			</button>
 		</td>
 		</tr>
@@ -52,18 +52,18 @@
 				<th>RANK</th>
 				<th>NAME</th>
 				<th>AUCTION</th>
-				<th>EVILRANK</th>
-				<th>ADD</th>
+				<th>POSITION</th>
+				<th>REMOVE</th>
 		</thead>
 		<tbody>
-		<tr ng-repeat="p in roto.myTeam">
-		<td>[[ p.rank ]]</td>
-		<td>[[ p.name ]]</td>
-		<td>$[[ p.price ]]</td>
-		<td>[[ p.evilrank ]]</td>
+		<tr ng-repeat="player in roto.myteamList">
+		<td>[[ player.rank ]]</td>
+		<td>[[ player.name ]]</td>
+		<td>[[ player.auction ]]</td>
+		<td>[[ player.yahoo ]]</td>
 		<td>
 			<button type="submit" class="btn-small glyphicon glyphicon-minus" 
-					ng-click="removePlayer(p, roto.myTeam)">			
+					ng-click="remove(player)">			
 			</button>
 		</td>
 		</tr>
