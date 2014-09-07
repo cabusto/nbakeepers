@@ -10,7 +10,7 @@ class RotoEvilStat(db.Model):
 	cbs = db.Column(db.String, nullable=False)
 	name = db.Column(db.String, nullable=False)
 	espn = db.Column(db.String, nullable=False)
-	auction = db.Column(db.String, nullable=False)
+	auction = db.Column(db.Integer, nullable=False)
 	comment = db.Column(db.String, nullable=True)
 	evilrank = db.Column(db.Float, nullable=False)
 	PPG = db.Column(db.Float, nullable=False)

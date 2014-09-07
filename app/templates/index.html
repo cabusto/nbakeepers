@@ -29,6 +29,12 @@
 				<th>NAME</th>
 				<th>AUCTION</th>
 				<th>POSITION</th>
+				<th>Points</th>
+				<th>Rebounds</th>
+				<th>Assists</th>
+				<th>Steals</th>
+				<th>Blocks</th>
+				<th>3PM</th>
 				<th>ADD</th>
 		</thead>
 		<tbody>
@@ -38,6 +44,12 @@
 		<td>[[ player.name ]]</td>
 		<td>[[ player.auction ]]</td>
 		<td>[[ player.yahoo ]]</td>
+		<td>[[ player.PPG ]]</td>
+		<td>[[ player.RPG ]]</td>
+		<td>[[ player.APG ]]</td>
+		<td>[[ player.SPG ]]</td>
+		<td>[[ player.BPG ]]</td>
+		<td>[[ player.THREEPM ]]</td>
 		<td>
 			<button type="submit" class="btn-small glyphicon glyphicon-plus" ng-click="add(player)">			
 			</button>
@@ -53,6 +65,12 @@
 				<th>NAME</th>
 				<th>AUCTION</th>
 				<th>POSITION</th>
+				<th>Points</th>
+				<th>Rebounds</th>
+				<th>Assists</th>
+				<th>Steals</th>
+				<th>Blocks</th>
+				<th>3PM</th>
 				<th>REMOVE</th>
 		</thead>
 		
@@ -62,6 +80,12 @@
 		<td>[[ player.name ]]</td>
 		<td>[[ player.auction ]]</td>
 		<td>[[ player.yahoo ]]</td>
+		<td>[[ player.PPG ]]</td>
+		<td>[[ player.RPG ]]</td>
+		<td>[[ player.APG ]]</td>
+		<td>[[ player.SPG ]]</td>
+		<td>[[ player.BPG ]]</td>
+		<td>[[ player.THREEPM ]]</td>
 		<td>
 			<button type="submit" class="btn-small glyphicon glyphicon-minus" 
 					ng-click="remove(player)">			
@@ -71,11 +95,16 @@
 		</tbody>
 		<tfoot>
 		<tr class="info">
-			<td>1</td>
+			<td></td>
 			<td>Totals</td>
-			<td>100</td>
-			<td>2</td>
-			<td>3</td>
+			<td>[[ roto.myteamList | avgByKey:'auction' ]]</td>
+			<td></td>
+			<td>[[ roto.myteamList | avgByKey:'PPG' ]]</td>
+			<td>[[ roto.myteamList | avgByKey:'RPG' ]]</td>
+			<td>[[ roto.myteamList | avgByKey:'APG' ]]</td>
+			<td>[[ roto.myteamList | avgByKey:'SPG' ]]</td>
+			<td>[[ roto.myteamList | avgByKey:'BPG' ]]</td>
+			<td>[[ roto.myteamList | avgByKey:'THREEPM' ]]</td>
 		</tr>
 		</tfoot>
 	</table>

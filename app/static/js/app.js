@@ -32,6 +32,22 @@
 		};
 	});
 	
+	app.filter('avgByKey', function () {
+    	return function (data, key) {
+        if (typeof (data) === 'undefined' || typeof (key) === 'undefined') {
+            return 0;
+        }
+
+        var sum = 0;
+        for (var i = data.length - 1; i >= 0; i--) {
+            sum += parseFloat(data[i][key]);
+        }
+		console.log("sum " + sum);
+			
+        return (sum / data.length).toFixed(2);
+			
+		};
+    });
 	// CONTROLLERS
 	// playerController
 	app.controller('PlayerController', [ '$http', '$scope', function($http, $scope){
