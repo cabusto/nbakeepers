@@ -2,7 +2,7 @@
             width: 100%;
         }
 
-        thead, tbody, tr, td, th { display: block; }
+        thead, tfoot, tbody, tr, td, th { display: block; }
 
         tr:after {
             content: ' ';
@@ -23,12 +23,11 @@
             
         }
 
-        thead {
+        thead, tfoot {
             /* fallback */
         }
 
-
-        tbody td, thead th {
+        tbody td, thead th, tfoot td{
             width: 18%;
             float: left;
         }

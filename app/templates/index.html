@@ -48,13 +48,14 @@
 	</table>
 	
 	<table class="table table-striped" >
-			<thead class="info">
+		<thead class="info">
 				<th>RANK</th>
 				<th>NAME</th>
 				<th>AUCTION</th>
 				<th>POSITION</th>
 				<th>REMOVE</th>
 		</thead>
+		
 		<tbody>
 		<tr ng-repeat="player in roto.myteamList">
 		<td>[[ player.rank ]]</td>
@@ -67,8 +68,16 @@
 			</button>
 		</td>
 		</tr>
-
 		</tbody>
+		<tfoot>
+		<tr class="info">
+			<td>1</td>
+			<td>Totals</td>
+			<td>100</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+		</tfoot>
 	</table>
 
 {% endblock %}
