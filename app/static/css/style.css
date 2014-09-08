@@ -12,7 +12,7 @@
         }
 
         thead th tr td {
-            height: 28px;
+            height: 30px;
 
             /*text-align: left;*/
         }
@@ -20,7 +20,6 @@
         tbody {
             height: 360px;
             overflow-y: auto;
-            
         }
 
         thead, tfoot {
@@ -28,6 +27,6 @@
         }
 
         tbody td, thead th, tfoot td{
-            width: 9%;
+            width: 7%;
             float: left;
         }

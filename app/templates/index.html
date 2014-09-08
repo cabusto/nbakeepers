@@ -35,6 +35,8 @@
 				<th>Steals</th>
 				<th>Blocks</th>
 				<th>3PM</th>
+				<th>FG%</th>
+				<th>FT%</th>
 				<th>ADD</th>
 		</thead>
 		<tbody>
@@ -50,6 +52,9 @@
 		<td>[[ player.SPG ]]</td>
 		<td>[[ player.BPG ]]</td>
 		<td>[[ player.THREEPM ]]</td>
+		<td>[[ player.FGPCT ]]</td> 
+		<td>[[ player.FTPCT ]]</td> 
+			
 		<td>
 			<button type="submit" class="btn-small glyphicon glyphicon-plus" ng-click="add(player)">			
 			</button>
@@ -61,31 +66,32 @@
 	
 	<table class="table table-striped" >
 		<thead class="info">
-				<th>RANK</th>
-				<th>NAME</th>
-				<th>AUCTION</th>
 				<th>POSITION</th>
+				<th>NAME</th>
 				<th>Points</th>
 				<th>Rebounds</th>
 				<th>Assists</th>
 				<th>Steals</th>
 				<th>Blocks</th>
 				<th>3PM</th>
+				<th>FG%</th>
+				<th>FT%</th>
 				<th>REMOVE</th>
 		</thead>
 		
 		<tbody>
 		<tr ng-repeat="player in roto.myteamList">
-		<td>[[ player.rank ]]</td>
-		<td>[[ player.name ]]</td>
-		<td>[[ player.auction ]]</td>
 		<td>[[ player.yahoo ]]</td>
+		<td>[[ player.name ]]</td>
 		<td>[[ player.PPG ]]</td>
 		<td>[[ player.RPG ]]</td>
 		<td>[[ player.APG ]]</td>
 		<td>[[ player.SPG ]]</td>
 		<td>[[ player.BPG ]]</td>
 		<td>[[ player.THREEPM ]]</td>
+		<td>[[ player.FGPCT ]]</td> 
+		<td>[[ player.FTPCT ]]</td> 
+		
 		<td>
 			<button type="submit" class="btn-small glyphicon glyphicon-minus" 
 					ng-click="remove(player)">			
@@ -95,16 +101,17 @@
 		</tbody>
 		<tfoot>
 		<tr class="info">
-			<td></td>
+			
 			<td>Totals</td>
-			<td>[[ roto.myteamList | avgByKey:'auction' ]]</td>
-			<td></td>
+			<td>[[ roto.myteamList.length ]]</td>
 			<td>[[ roto.myteamList | avgByKey:'PPG' ]]</td>
 			<td>[[ roto.myteamList | avgByKey:'RPG' ]]</td>
 			<td>[[ roto.myteamList | avgByKey:'APG' ]]</td>
 			<td>[[ roto.myteamList | avgByKey:'SPG' ]]</td>
 			<td>[[ roto.myteamList | avgByKey:'BPG' ]]</td>
 			<td>[[ roto.myteamList | avgByKey:'THREEPM' ]]</td>
+			<td>[[ roto.myteamList | avgByKey:'FGPCT' ]]</td>
+			<td>[[ roto.myteamList | avgByKey:'FTPCT' ]]</td>
 		</tr>
 		</tfoot>
 	</table>
