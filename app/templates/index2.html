@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="roto">
+<head>
+    <title>NBA Keeper Help</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>s
+<body>
+
+<div class="container"> 
+	<section ng-init="panel.selectTab(1)" ng-controller="PanelController as panel">
+		
+		<ul class="nav nav-pills">
+			<li ng-class="{ active:panel.isSelected(1) }">
+				<a href ng-click="panel.selectTab(1)">PlayerList</a>
+			</li>
+			<li ng-class="{ active:panel.isSelected(2) }">
+				<a href ng-click="panel.selectTab(2)">Advanced</a>
+			</li>
+			<li  ng-class="{ active:panel.isSelected(3) }">
+				<a href ng-click="panel.selectTab(3)">Notes</a>
+			</li>
+		</ul>
+	
+	<div ng-controller="RotoController as roto">
+	<div class="panel" ng-show="panel.isSelected(1)">
+		<table class="table-striped">
+		<thead>
+			<th>Rank</th>
+			<th>Name</th>
+			<th>Auction Price</th>
+			<th>Position</th>
+		</thead>
+		<tbody ng-repeat="player in roto.players">
+			<td>{{ player.rank }}</td>
+			<td>{{ player.name }}</td>
+			<td>{{ player.auction }}</td>
+			<td>{{ player.position }}</td>
+		</tbody>
+		</table>
+	</div>
+	<div class="panel" ng-show="panel.isSelected(2)">
+		<table class="table-striped">
+		<thead>
+			<th>Rank</th>
+			<th>Name</th>
+			<th>Rotoevil Score</th>
+			<th>PPG</th>
+			<th>RPG</th>
+			<th>APG</th>
+		</thead>
+		<tbody ng-repeat="player in roto.players">
+			<td>{{ player.rank }}</td>
+			<td>{{ player.name }}</td>
+			<td>{{ player.rotoevil }}</td>
+			<td>{{ player.PPG }}</td>
+			<td>{{ player.RPG }}</td>
+			<td>{{ player.APG }}</td>
+		</tbody>
+		</table>
+	</div>
+	<div class="panel" ng-show="panel.isSelected(3)">
+		<div ng-repeat="player in roto.players">
+		<h4>{{ player.rank + " . " + player.name }}</h4>
+		<p>{{ player.notes }}</p>
+		</div>
+	</div>
+	</div>
+	</section>
+</div>
+ 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" ></link>
+ 	<link rel="stylesheet" type="text/css" href="css/style.css" ></link>
+ 	<script type="text/javascript" src="js/angular.min.js" ></script>
+ 	<script type="text/javascript" src="js/app2.js" ></script>
+
+</body>
+</html>
