@@ -1,11 +1,13 @@
 from flask import Flask
 #from flask.ext.stormpath import StormpathManager
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.bcrypt import Bcrypt
 from flask.ext.marshmallow import Marshmallow
 import os
 
 
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 
 
 #config
