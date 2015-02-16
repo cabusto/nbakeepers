@@ -15,8 +15,8 @@ db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
 from project.rotoevil.views import rotoevil_blueprint
-from project.staticpages.views import staticpages_blueprint
+from project.home.views import home_blueprint
 
 #register blueprints
 app.register_blueprint(rotoevil_blueprint)
-app.register_blueprint(staticpages_blueprint)
+app.register_blueprint(home_blueprint)
