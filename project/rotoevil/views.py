@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint
-from app import app, db
-from models import RotoEvilStat
+from project import app, db
+from project.models import RotoEvilStat
 from serializers import RotoEvilStatMarshal
 from flask import jsonify
 from marshmallow import pprint

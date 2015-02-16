@@ -1,4 +1,4 @@
-from app import ma
+from project import ma
 
 class RotoEvilStatMarshal(ma.Serializer):
     class Meta:
