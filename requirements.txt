@@ -18,5 +18,7 @@ itsdangerous==0.23
 marshmallow==0.7.0
 psycopg2==2.5.3
 py-bcrypt==0.4
+rauth==0.7.1
+requests==2.5.3
 six==1.7.3
 wsgiref==0.1.2

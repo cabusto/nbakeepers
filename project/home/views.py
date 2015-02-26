@@ -1,5 +1,7 @@
 from flask import render_template, Blueprint
 from project import app
+from yahooapi import YahooAPI
+
 
 
 home_blueprint = Blueprint(
@@ -10,4 +12,5 @@ home_blueprint = Blueprint(
 @home_blueprint.route('/')
 @home_blueprint.route('/welcome')
 def welcome():
-	return render_template('welcome.html')
+    YahooAPI(keys)
+    return render_template('welcome.html')
