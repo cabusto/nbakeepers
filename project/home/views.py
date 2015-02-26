@@ -12,5 +12,5 @@ home_blueprint = Blueprint(
 @home_blueprint.route('/')
 @home_blueprint.route('/welcome')
 def welcome():
-    YahooAPI(keys)
+    YahooAPI('keys')
     return render_template('welcome.html')
