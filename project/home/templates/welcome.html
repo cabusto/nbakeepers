@@ -1,9 +1,23 @@
 {% extends 'layout.html' %}
 {% block content %}
 <div class="row">
-		<h1>Welcome!</h1>
-		<p>Enter your email below to be notified on this project!</p>
-		<input type="email" placeholder="Your email" />
-		<input type="submit" />
-	</div>
+    <h1>Welcome!</h1>
+    <p>Enter your email below to be notified on this project!</p>
+    <input type="email" placeholder="Your email" />
+    <input type="submit" />
+</div>
+
+<div class="row">
+    <p>Click to connect to yahoo
+    <a href="{{ link }}" target="_blank">Link</a>    
+    </p>
+    
+    <p>Enter token below</p>
+    <form method="POST" action="/welcome">
+        {{ form.csrf_token }}
+        {{ form.authToken(size=20, placeholder="Authorization Token") }}
+        <input type="submit" value="Connect">
+    </form>
+    
+</div>
 {% endblock %}

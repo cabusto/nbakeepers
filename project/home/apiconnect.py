@@ -3,14 +3,20 @@ from rauth.utils import parse_utf8_qsl
 import pickle
 import time
 
-class YahooAPI:
+class apiConnect:
     # access token lifetime in seconds
     access_token_lifetime = 3600
 
     # one request every X seconds to try to prevent 999 error codes
-    request_period = 2
-
-    def __init__(self, keyfile, verification_code, tokenfile=None):
+    request_period = 2   
+    
+    authorize_url = ""
+    request_token = ""
+    request_token_secret = ""
+    saved_token = None
+    oauth = None
+    
+    def __init__(self, keyfile, tokenfile=None):
 
         self.saved_token = None
 
@@ -53,40 +59,46 @@ class YahooAPI:
             self.refresh_access_token()
 
         else:
-            request_token, request_token_secret = \
+            self.request_token, self.request_token_secret = \
                 self.oauth.get_request_token(params={"oauth_callback": "oob"})
 
-            authorize_url = self.oauth.get_authorize_url(request_token)
+            self.authorize_url = self.oauth.get_authorize_url(self.request_token)
+            
+            print self.authorize_url
+            
+    def connect(self, access_code):
+        self.access_token_time = time.time()
+        verification_code = access_code
+        
+        print verification_code
+        
+        raw_access = self.oauth.get_raw_access_token(
+            self.request_token, self.request_token_secret,
+            params={"oauth_verifier": verification_code})
+        
+        print "raw_access" 
+        print raw_access.content
 
-            #print "Sign in here: " + str(authorize_url)
-            #verification_code = raw_input("Enter code: ")
+        parsed_access_token = parse_utf8_qsl(raw_access.content)
+ 
+        self.saved_token = {}
+        self.saved_token["access_token"] = parsed_access_token["oauth_token"]
+        self.saved_token["access_token_secret"] = \
+        parsed_access_token["oauth_token_secret"]
+        self.saved_token["session_handle"] = \
+        parsed_access_token["oauth_session_handle"]
 
-            self.access_token_time = time.time()
-
-            raw_access = self.oauth.get_raw_access_token(
-                                request_token, request_token_secret,
-                                params={"oauth_verifier": verification_code})
-
-            parsed_access_token = parse_utf8_qsl(raw_access.content)
-
-            self.saved_token = {}
-            self.saved_token["access_token"] = parsed_access_token["oauth_token"]
-            self.saved_token["access_token_secret"] = \
-                    parsed_access_token["oauth_token_secret"]
-            self.saved_token["session_handle"] = \
-                    parsed_access_token["oauth_session_handle"]
-
-            if tokenfile is not None:
-                try:
-                    f = open(tokenfile, "w")
-                    pickle.dump(self.saved_token, f)
-                    f.close()
-                except IOError:
-                    pass
+        if tokenfile is not None:
+            try:
+                f = open(tokenfile, "w")
+                pickle.dump(self.saved_token, f)
+                f.close()
+            except IOError:
+                pass
 
             self.session = self.oauth.get_session(
-                                (self.saved_token["access_token"],
-                                 self.saved_token["access_token_secret"]))
+                (self.saved_token["access_token"],
+                 self.saved_token["access_token_secret"]))
 
     def refresh_access_token(self):
         self.access_token_time = time.time()
@@ -117,3 +129,8 @@ class YahooAPI:
             self.refresh_access_token()
 
         return self.session.get(request_str)
+    
+    def getURL(self):
+        return str(self.authorize_url)
+    
+

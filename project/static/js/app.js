@@ -1,3 +1,5 @@
+
+// changes {{ }} to [[ ]] for angular injection (so as not to interfer with flask)
 (function() {
 	var app = angular.module('roto', []).
   		config(function ($interpolateProvider) {
@@ -48,6 +50,7 @@
 			
 		};
     });
+    
 	// CONTROLLERS
 	// playerController
 	app.controller('PlayerController', [ '$http', '$scope', function($http, $scope){
@@ -57,16 +60,17 @@
 		rotoevil.myteamList = [ ];
 		
 		$scope.add = function(player) {
-			console.log("Adding " + player.name);	
+			// add to team list
+            console.log("Adding " + player.name);	
 			rotoevil.myteamList.push(player);
 			console.log("Team size " + rotoevil.myteamList.length);
-			// remove from player list
+			// remove from player pool list
 			$scope.remove(player, rotoevil.players);
 		};
 		
 		$scope.remove = function(player, playerlist) {
 			// if playerlist doesn't exist, we are removing from myteamList.
-			// we will need to add back to main list
+			// we will need to add back to player pool
 			if (typeof playerlist === 'undefined') {
 				playerlist = rotoevil.myteamList;
 				rotoevil.players.splice(player.rank-1, 0, player);
@@ -93,6 +97,7 @@
 		
 	}]);
 	
+    
 	app.controller('PanelController', function() {
 		this.tab = 1;
 
