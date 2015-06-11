@@ -1,7 +1,12 @@
   
+This uses Python 2.7. I really should update.
+
+start with:
+pip install -r requirements.txt
+
 To generate db, run python db_create.py
 
-run these commands to set database location  
+run these commands to set database location (I was using postgresql)
 export DATABASE_URI="postgresql://localhost/nbakeepers"
 
 run to set dev mode
