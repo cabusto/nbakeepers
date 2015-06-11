@@ -1,3 +1,21 @@
+  
+To generate db, run python db_create.py
+
+run these commands to set database location  
+export DATABASE_URI="postgresql://localhost/nbakeepers"
+
+run to set dev mode
+export APP_SETTINGS="config.DevelopmentConfig"
+
+to start server:
+python manage.py runserver
+
+config settings in config.py
+
+  
+If running in Nitrous.io:
+Add postgress through autoparts
+
 To start the server:
   $ parts start postgresql
 
@@ -6,6 +24,3 @@ To stop the server:
 
 To connect to the server:
   $ psql
-  
-  export DATABASE_URI="postgresql://localhost/nbakeepers"
-  export APP_SETTINGS="config.DevelopmentConfig"
